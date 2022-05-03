@@ -12,8 +12,20 @@
 <link href='https://css.gg/align-bottom.css' rel='stylesheet'>
 
 
-<script> // ghi du lieu 
-  function nhapHang(dat,b) 
+
+<script type="text/javascript">
+  function message() {
+
+    alert("Nếu bạn muốn liên hệ với chúng tôi qua Gmail thì đây là link: datb1913010@student.ctu.edu.vn")
+
+  }
+</script>
+
+
+
+
+<script> // ghi du lieu
+  function nhapHang3(dat,b) 
     {
         var request = new XMLHttpRequest();
         var urlHere = "https://api.thingspeak.com/update?";
@@ -25,13 +37,13 @@
           b();
         }, 5000); 
     }
-  function xuatHang(dat,b)
+  function xuatHang3(dat,b)
     {
         var request = new XMLHttpRequest();
         var urlHere = "https://api.thingspeak.com/update?";
         urlHere = urlHere + "api_key=L0QETLAIPHM8QTJK&field2="+ dat;
         
-        if (parseInt(dat)<=tonKho) {
+        if (parseInt(dat)<=tonKho3) {
           request.open('GET', urlHere, true);
           request.send();          
         }else{
@@ -41,7 +53,7 @@
           b();
         },5000);
     }
-  function thongKe()
+  function thongKe3()
     {
         var request = new XMLHttpRequest();
         var urlHere = "https://api.thingspeak.com/update?";
@@ -53,30 +65,30 @@
                 console.log(data);
                 var length = data.feeds.length;  //kich thuoc du lieu
                 //loc bo cac phan tu null
-                dataNhap = new Array();
-                dataXuat = new Array();
+                dataNhap3 = new Array();
+                dataXuat3 = new Array();
                 //quet du lieu
                 for(i=0;i<length;i++){
                   if (data.feeds[i].field1 != null){
-                    dataNhap.push(data.feeds[i].field1);
+                    dataNhap3.push(data.feeds[i].field1);
                   }
                   if (data.feeds[i].field2 != null){
-                    dataXuat.push(data.feeds[i].field2);
+                    dataXuat3.push(data.feeds[i].field2);
                   }
                 }
                 // hiển thị số lượng tồn kho
-                tongXuat=0, tongNhap=0, tonKho=0;
+                tongXuat3=0, tongNhap3=0, tonKho3=0;
                 //tính tổng xuất
-                for(i=0;i<dataXuat.length;i++){
-                  tongXuat += parseInt(dataXuat[i]);
+                for(i=0;i<dataXuat3.length;i++){
+                  tongXuat3 += parseInt(dataXuat3[i]);
                 }
                 //tính tổng nhập
-                for(i=0;i<dataNhap.length;i++){
-                  tongNhap += parseInt(dataNhap[i]);
+                for(i=0;i<dataNhap3.length;i++){
+                  tongNhap3 += parseInt(dataNhap3[i]);
                 }
                 //tính tồn kho
-                tonKho = tongNhap - tongXuat;
-                document.getElementById("thongke").innerHTML = "Tổng số sản phẩm đang trong kho:"+tonKho;
+                tonKho3 = tongNhap3 - tongXuat3;
+                document.getElementById("thongke3").innerHTML = "Tổng số Caphe đã bán:"+tonKho3;
                 //Ve bieu đồ nhập xuất
 
             } else {
@@ -89,6 +101,88 @@
         //request.open('GET', urlHere, true);
         //request.send();
     }
+    function nhapHang4(dat,b) 
+    {
+        var request = new XMLHttpRequest();
+        var urlHere = "https://api.thingspeak.com/update?";
+        
+        urlHere = urlHere + "api_key=L0QETLAIPHM8QTJK&field3="+ dat;
+        request.open('GET', urlHere, true);
+        request.send();
+        setTimeout(function(){  
+          b();
+        }, 5000); 
+    }
+  function xuatHang4(dat,b)
+    {
+        var request = new XMLHttpRequest();
+        var urlHere = "https://api.thingspeak.com/update?";
+        urlHere = urlHere + "api_key=L0QETLAIPHM8QTJK&field4="+ dat;
+        
+        if (parseInt(dat)<=tonKho4) {
+          request.open('GET', urlHere, true);
+          request.send();          
+        }else{
+          alert("Hàng không đủ để xuất!");
+        }
+        setTimeout(function(){
+          b();
+        },5000);
+    }
+  function thongKe4()
+    {
+        var request = new XMLHttpRequest();
+        var urlHere = "https://api.thingspeak.com/update?";
+        urlHere = " https://api.thingspeak.com/channels/1713663/feeds.json";
+        request.open('GET', urlHere, true);
+        request.onload = function() {
+            if (request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                var length = data.feeds.length;  //kich thuoc du lieu
+                //loc bo cac phan tu null
+                dataNhap4 = new Array();
+                dataXuat4 = new Array();
+                //quet du lieu
+                for(i=0;i<length;i++){
+                  if (data.feeds[i].field3 != null){
+                    dataNhap4.push(data.feeds[i].field3);
+                  }
+                  if (data.feeds[i].field4 != null){
+                    dataXuat4.push(data.feeds[i].field4);
+                  }
+                }
+                // hiển thị số lượng tồn kho
+                tongXuat4=0, tongNhap4=0, tonKho4=0;
+                //tính tổng xuất
+                for(i=0;i<dataXuat4.length;i++){
+                  tongXuat4 += parseInt(dataXuat4[i]);
+                }
+                //tính tổng nhập
+                for(i=0;i<dataNhap4.length;i++){
+                  tongNhap4 += parseInt(dataNhap4[i]);
+                }
+                //tính tồn kho
+                tonKho4 = tongNhap4 - tongXuat4;
+                document.getElementById("thongke4").innerHTML = "Tổng số Lipton đã bán:"+tonKho4;
+                //Ve bieu đồ nhập xuất
+
+            } else {
+            // We reached our target server, but it returned an error
+            }
+        };
+        request.send();
+
+        
+        //request.open('GET', urlHere, true);
+        //request.send();
+    }
+    function thongKe5(){
+      nlcf=5000, nltra=3000, giacf= 15000, giatr=12000, tong=0;
+      tong= tonKho3*(giacf- nlcf)+ tonKho4*(giatr- nltra);
+      document.getElementById("thongKe5").innerHTML = "Tổng doanh thu:"+tong;
+    }
+
 </script> 
 
 
@@ -131,7 +225,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                 }
                 //tính tồn kho
                 tonKho = tongNhap-tongXuat;
-                document.getElementById("thongKe1").innerHTML = "Tổng số sản phẩm đang trong kho:" +tonKho;
+                document.getElementById("thongKe1").innerHTML = "Tổng số Caphe đã bán:" +tonKho;
                 //Ve bieu đồ nhập xuất
                 var yNhap = new Array();
                 var yXuat = new Array();
@@ -219,6 +313,128 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
         //request.open('GET', urlHere, true);
         //request.send();
     }
+    function thongKe2()
+    {
+        var request = new XMLHttpRequest();
+        var urlHere = "https://api.thingspeak.com/update?";
+        urlHere = "https://api.thingspeak.com/channels/1713663/feeds.json";
+        request.open('GET', urlHere, true);
+        request.onload = function() {
+            if (request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                //console.log(data);
+                var length = data.feeds.length;  //kich thuoc du lieu
+                //loc bo cac phan tu null
+                dataNhap1 = new Array();
+                dataXuat1 = new Array();
+                for(i=0;i<length;i++){
+                  if (data.feeds[i].field3 != null){
+                    dataNhap1.push(data.feeds[i].field3);
+                  }
+                  if (data.feeds[i].field4 != null){
+                    dataXuat1.push(data.feeds[i].field4);
+                  }
+                }
+                // hiển thị số lượng tồn kho
+                tongXuat1=0, tongNhap1=0, tonKho1=0;
+                //tính tổng xuất
+                for(i=0;i<dataXuat1.length;i++){
+                  tongXuat1 += parseInt(dataXuat1[i]);
+                }
+                //tính tổng nhập
+                for(i=0;i<dataNhap1.length;i++){
+                  tongNhap1 += parseInt(dataNhap1[i]);
+                }
+                //tính tồn kho
+                tonKho1 = tongNhap1-tongXuat1;
+                document.getElementById("thongKe2").innerHTML = "Tổng số Lipton đã bán:" +tonKho1;
+                //Ve bieu đồ nhập xuất
+                var yNhap1 = new Array();
+                var yXuat1 = new Array();
+                var xNhap1 = new Array();
+                var xXuat1 = new Array();
+                for(var i=0;i<length;i++){
+                  if (data.feeds[i].field3 != null){
+                    yNhap1.push(data.feeds[i].field3);
+                    xNhap1.push(data.feeds[i].created_at);
+                  }
+                  if (data.feeds[i].field4 != null){
+                    yXuat1.push(data.feeds[i].field4);
+                    xXuat1.push(data.feeds[i].created_at);
+                  }
+                }
+                //bieu đồ
+                new Chart("chartNhap1", {
+                    type: "bar",
+                    data: {
+                        labels: xNhap1,
+                        datasets: [
+                        {
+                            fill: false,
+                            backgroundColor: "red",
+                            label: "Quá trình nhập hàng2",
+                            data: yNhap1
+                        }, 
+                        ]
+                    },
+                    options: {
+                        plugins:{
+                            legend: {
+                              display: true,
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                              display: true,
+                              ticks: {
+                                beginAtZero: true,
+                                //max: (yNhap.max)
+                              }
+                            }]
+                        }
+                    }
+                });
+                new Chart("chartXuat1", {
+                    type: "bar",
+                    data: {
+                        labels: xXuat1,
+                        datasets: [
+                        {
+                            fill: false,
+                            backgroundColor: "blue",
+                            label: "Quá trình xuất hàng1",
+                            data: yXuat1
+                        }, 
+                        ]
+                    },
+                    options: {
+                        plugins:{
+                            legend: {
+                                display: true,
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                display: true,
+                                ticks: {
+                                    beginAtZero: true,
+                                    //max: (yXuat.max)
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            } else {
+            // We reached our target server, but it returned an error
+            }
+        };
+        request.send();
+
+        
+        //request.open('GET', urlHere, true);
+        //request.send();
+    }
 </script> 
 
 
@@ -261,7 +477,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                         <a class="navbar-brand text-uppercase" href="https://www.ctu.edu.vn/"><img class="logo"
             src=
 "img/iOT Coffee shop_transparent .png"
-            alt="Loading image" width="100" height="100"> Ctu.edu.vn</a>
+            alt="Loading image" width="110" height="110"> Ctu.edu.vn</a>
 
                         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
                             &#9776;
@@ -305,14 +521,21 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                                 <div class="text-xs-left tm-textbox tm-textbox-padding tm-bg-white-translucent tm-3-col-textbox-inner">
                                                      <i class="fa fa-4x fa-envelope tm-home-fa"></i>                                             
                                                     <h2 class="tm-text-title"> Tên đề tài</h2>                                         
-                                                    <p class="tm-text">Ứng dụng IoTs vào giải quyết vấn đề trong chuyên ngành Quản lý công nghệp cụ thể là Quản lý   <a href="https://www.facebook.com/vankhanh.mkd" target="_parent">Giáo viên hướng dẫn:</a> Giảng viên Nguyễn Văn Khanh.</p>
+                                                    <p class="tm-text">Ứng dụng ioTs vào giải quyết vấn đề trong chuyên ngành Quản lý công nghiệp cụ thể là Quản lý Quán Coffee thông qua ioTs. Giảng viên hướng dẫn:   <a href="https://www.facebook.com/vankhanh.mkd" target="_parent">Nguyễn Văn Khanh.</a> </p>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tm-3-col-textbox">
                                                 <div class="text-xs-left tm-textbox tm-textbox-padding tm-bg-white-translucent tm-3-col-textbox-inner">
                                                     <i class="fa fa-4x fa-bicycle tm-home-fa"></i>
                                                     <h2 class="tm-text-title">Welcome!</h2>
-                                                    <p class="tm-text">There are 3 different gallaries in this template. You can customize them in any suitable way you prefer. You can also modify the content columns as you wish. Images are from Unsplash website. Good Luck!</p>
+                                                    <p class="tm-text">Cụ thế đồ án của nhóm gồm những nội dung như sau:
+                                                        <br> -Page1: Home
+                                                        <br> -Page2: Trang thành viên (Giới thiệu, phân công công việc,... )
+                                                        <br> -Page3: Nhập số lượng mặt hàng để tính doanh thu.
+                                                        <br> -Page4: Chart thay đổi giá trị mặt hàng.
+                                                        <br> -Page5: Điều khiển Led quán coffee.
+                                                        <br> -Page6: Trang liên hệ.
+                                                    </p>
                                                 </div>          
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tm-3-col-textbox">
@@ -405,33 +628,70 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                 <!-- Gallery Two pop up connected with JS code below -->
                                     
                                     <div class="tm-img-gallery-info-container">                                    
-                                        <h2 class="tm-text-title tm-gallery-title"><span class="tm-white">Second Gallery</span></h2>
-                                        <p class="tm-text"><span class="tm-white">Aenean nulla lorem, laoreet eu nibh et, lacinia ullamcorper dui. Nullam ut tincidunt odio. Morbi accumsan diam vel enim cursus, in dapibus eros tristique.</span>
+                                        <h2 class="tm-text-title tm-gallery-title"><span class="tm-white">Nhập, xóa và kiểm tra Doanh thu</span></h2>
+                                        <p class="tm-text"><span class="tm-white">Vui lòng chờ khoảng 5s dữ liệu sẽ được cặp nhật .</span>
                                         </p>
                                     </div>
                                     
                                       
 <div class="content">
-  <h2>Chức năng nhập và xuất hàng</h2>
-  <p>Tự động thống kê sau 5 giây để kiểm tra xem việc nhập xuất thành công không</p>
+  
   <!--form chính-->
   <!--Ứng dụng này sử dụng Field4 và 5 để lưu trữ thông tin-->
-  <form name="form1">
+  <table cellpadding="10">
+    <tr>  
+        <td><form name="form1">
         <br> <br>
-        <label for="Nhap">Nhập hàng</label>
-        <input type="text" id="nhap" value="0"> <br> <br>
-        <label for="Xuat">Xuất hàng</label>
-        <input type="text" id="xuat" value="0"> <br> <br>
-        <input type = "button" value = "Nhập" onclick = "nhapHang(form1.nhap.value,thongKe)"> &nbsp; &nbsp;
-        <input type = "button" value = "Xuất" onclick = "xuatHang(form1.xuat.value,thongKe)">
+        <label for="Nhap">Nhập số Caphe đã bán</label><br>
+        <input type="text" id="nhap" value="0"> <br><br>
+        <label for="Xóa">Xóa Caphe</label><br>
+        <input type="text" id="xuat" value="0"> <br><br>
+        <input type = "button" value = "Nhập" onclick = "nhapHang3(form1.nhap.value,thongKe3)"> &nbsp;
+        <input type = "button" value = "Xóa" onclick = "xuatHang3(form1.xuat.value,thongKe3)">
   </form>
   <br> <br>
  
   <form name="form2">
-        <input type = "button" value = "Kiểm tra" onclick = "thongKe()">
+        <input type = "button" value = "Kiểm tra" onclick = "thongKe3()">
+  
   </form>
-  <p id="thongke"> </p>
+  <p id="thongke3"> </p>
 </div>
+</td>
+   <!--...............-->
+   <td>
+   <div class="content">
+
+    <form name="form3" >
+        <br> <br>
+        <label for="Nhap">Nhập số Lipton đã bán</label><br>
+        <input type="text" id="nhap" value="0"> <br><br>
+        <label for="Xóa">Xóa Lipton</label><br>
+        <input type="text" id="xuat" value="0"> <br><br>
+        <input type = "button" value = "Nhập" onclick = "nhapHang4(form3.nhap.value,thongKe4)"> &nbsp;
+        <input type = "button" value = "Xóa" onclick = "xuatHang4(form3.xuat.value,thongKe4)">
+  </form>
+  <br> <br>
+ 
+  <form name="form4" >
+        <input type = "button" value = "Kiểm tra" onclick = "thongKe4()">
+  
+  </form>
+  <p id="thongke4"> </p></td>
+  <td><div class="content">
+<form name="form4" >
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+        <input type = "button" value = "Kiểm tra doanh thu" onclick = "thongKe5()">
+  
+  </form>
+  <p id="thongKe5"> </p>
+  </div></td>
+  </tr>
+</table>
+
+
+</div>
+
 
 
 
@@ -458,22 +718,25 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                     
                                     
                                         
-                              <body onload="thongKe1()">
-
-
-<div class="content">
+                              <div class="content">
  
   <form name="form2">
         <input type = "button" value = "Kiểm tra" onclick = "thongKe1()">
+  </form>
+  <form name="form2">
+        <input type = "button" value = "Kiểm tra1" onclick = "thongKe2()">
   </form>
   <p id="thongKe1"> </p>
    <p>Quá trình nhập hàng</p>
   <canvas id="chartNhap" style="width:100%;max-width:700px"></canvas>
   <p>Quá trình xuất hàng</p>
   <canvas id="chartXuat" style="width:100%;max-width:700px"></canvas>
+  <p id="thongKe2"> </p>
+   <p>Quá trình nhập hàng1</p>
+  <canvas id="chartNhap1" style="width:100%;max-width:700px"></canvas>
+  <p>Quá trình xuất hàng1</p>
+  <canvas id="chartXuat1" style="width:100%;max-width:700px"></canvas>
 </div>
-
-</body>
                                                 
                                                      
                                      
@@ -532,7 +795,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                                 <p class="tm-text">Praesent tempus dapibus odio nec elementum. Sed elementum est quis tortor faucibus, et molestie nibh finibus. Mauris condimentum ex vestibulum fringilla consectetur.</p>                                                
                                                 
                                                 <!-- contact form -->
-                                                <form action="index.html" method="post" class="tm-contact-form">
+                                                <form  action="index.html" method="post" class="tm-contact-form">
 
                                                     <div class="form-group">
                                                         <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
@@ -552,7 +815,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                             </div>
 
                                             <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
-                                                <h2 class="tm-contact-info">123 New Street 11000, San Francisco, CA</h2>
+                                                <h2 class="tm-contact-info">Đại học cần thơ, Khu II, 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</h2>
                                                 <!-- google map goes here -->
                                                 <div id="google-map"></div>
                                             </div>
@@ -570,21 +833,21 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     </div> <!-- .cd-full-width -->
                 </li>
             </ul> <!-- .cd-hero-slider -->
-            
+         
             <footer class="tm-footer">
             
                 <div class="tm-social-icons-container text-xs-center">
                     <a href="https://www.facebook.com/thanhdata3/" class="tm-social-link"><i class="fa fa-facebook"></i></a>
-                    <a href="datb1913010@student.ctu.edu.vn" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+                 <a href="#" class="tm-social-link">  <i class="fa fa-google-plus"></i></a>
                     
                 </div>
                 
-                <p class="tm-copyright-text">Copyright &copy; 2022 Your Teams 
+                <p class="tm-copyright-text">Copyright &copy; 2022 Your Teams Nhóm 9  
                 
-                - Design: <a rel="nofollow" href="https://cet.ctu.edu.vn/images/upload/daotao/decuong/KC326.pdf" class="tm-footer-link" target="_parent">Nhóm 9 HP KC326</a></p>
+                - Design: <a rel="nofollow" href="https://cet.ctu.edu.vn/images/upload/daotao/decuong/KC326.pdf" class="tm-footer-link" target="_parent">HP KC326</a></p>
 
             </footer>
-                    
+                  
         </div> <!-- .cd-hero -->
         
 
@@ -705,7 +968,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
             function initialize() {
                 var mapOptions = {
                     zoom: 15,
-                    center: new google.maps.LatLng(37.769725, -122.462154),
+                    center: new google.maps.LatLng(10.029638, 105.77039),
                     scrollwheel: false
                 };
             
