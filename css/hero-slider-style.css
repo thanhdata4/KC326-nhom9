@@ -94,7 +94,7 @@ Main Components
   padding-left: 5%;
   background: #21272c;
   border-top: 1px solid #333c44;
-  color: #ffffff;
+  color: #fa1111;
 }
 @media only screen and (min-width: 768px) {
   .cd-primary-nav {
@@ -296,7 +296,7 @@ Single slide style
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
   margin: 0 auto 14px;
-  color: #ffffff;
+  color: #000000;
   width: 90%;
   max-width: 400px;
 }
@@ -315,7 +315,7 @@ Single slide style
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #ffffff;
+  color: #000000;
   text-transform: uppercase;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   -webkit-transition: background-color 0.2s;
